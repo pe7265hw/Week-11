@@ -2,7 +2,10 @@
 import BMI_Calculator from './components/BMI_Calculator.vue';
 import {ref, watch} from 'vue'
 
-
+import { useBmiStore } from './stores/BmiStore';
+import { storeToRefs } from 'pinia';
+const bmiStore = useBmiStore()
+const {errors, bMI} = storeToRefs(bmiStore)
 
 //variables that will be passed as props to child
 const initialStatement = ref('Check you BMI! Enter your height and weight below.')
@@ -13,8 +16,10 @@ const weightStatement = ref('Weight in Kilograms: ')
 const displayBMI = ref('')
 
 //function used to process and diplay final BMI
-function dipsplayFinalBMI(finalBMI){
-    displayBMI.value = `Your BMI is ${finalBMI}`
+function dipsplayFinalBMI(){
+    // if errors, display errors
+    // else if a BMI value, display that 
+    displayBMI.value = `Your BMI is ${bMI.value}`
 }
 
 </script>
@@ -31,7 +36,7 @@ function dipsplayFinalBMI(finalBMI){
 
 <p>{{ displayBMI }}</p>
 
- 
+<p>{{ errors }}</p>
 </template>
 
 <style scoped>
