@@ -1,4 +1,4 @@
-import { defineStore } from "pinia"
+import { defineStore } from 'pinia'
 import {ref, computed} from 'vue'
 
 export const useStudentStore = defineStore('students', () =>{
@@ -8,7 +8,7 @@ export const useStudentStore = defineStore('students', () =>{
         {name: 'Mary Joe', starID: 'az42117br', present: false}
     ])
 
-    const mostRecentStudents = ref({}) //empt object
+    const mostRecentStudent = ref({}) //empt object
 
     function addNewStudent(student){
         studentList.value.push(student)
@@ -21,13 +21,13 @@ export const useStudentStore = defineStore('students', () =>{
     }
 
     function arrivedOrLeft(student){
-        mostRecentStudents.value = student
+        mostRecentStudent.value = student
     }
 
     return{
         //reactive data
         studentList,
-        mostRecentStudents,
+        mostRecentStudent,
 
         //functions
         addNewStudent,
