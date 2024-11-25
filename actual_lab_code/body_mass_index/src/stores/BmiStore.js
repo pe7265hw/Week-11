@@ -9,7 +9,7 @@ export const useBmiStore = defineStore('bmi', () =>{
     const bmi = ref('')
 
 
-
+  //computed property of bmi
     const bMI = computed( () => {
       console.log(userHeight.value, userWeight.value)
       bmi.value = Math.round(userWeight.value / (userHeight.value * userHeight.value))
